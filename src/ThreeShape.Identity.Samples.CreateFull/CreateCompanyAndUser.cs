@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Threading.Tasks;
 using Thinktecture.IdentityModel.Client;
 using ThreeShape.Identity.Data.Client;
 using ThreeShape.Identity.Data.Client.Users;
@@ -41,7 +42,7 @@ namespace ThreeShape.Identity.Samples.CreateFull
 
             //Set code for user, lives for 48hours usable only once
             // usable in: https://test-identity.3shape.com/account/activate?code=whatevercode
-            dataClient.Users.SetCodeAsync(token, userId, "whatevercode");
+            Task.Run(()=> dataClient.Users.SetCodeAsync(token, userId, "whatevercode"));
 
             //Create Company
             Company company = new Company
