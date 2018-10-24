@@ -33,8 +33,15 @@ namespace ThreeShape.Identity.Samples.CreateFull
                 Password = "password#123",
                 Username = $"test_ecom{id}@test.com",
                 Roles = new List<string>()
+                
             };
             var userId = dataClient.Users.CreateAsync(token, user).Result;
+
+            var usertokenResponse = client.RequestResourceOwnerPasswordAsync(user.Email, user.Password, "data.users.full_access data.companies.full_access").Result;
+
+            //Set code for user, lives for 48hours usable only once
+            // usable in: https://test-identity.3shape.com/account/activate?code=whatevercode
+            dataClient.Users.SetCodeAsync(token, userId, "whatevercode");
 
             //Create Company
             Company company = new Company
@@ -53,8 +60,8 @@ namespace ThreeShape.Identity.Samples.CreateFull
                 Roles = new List<Role> { new Role { Name = "3Shape.Reseller" } } 
             };
 
-            var companyId = dataClient.Companies.CreateAsync(token, company,userId).Result;
-
+            var companyId = dataClient.Companies.CreateAsync(usertokenResponse.AccessToken, company,userId).Result;
+            
             Console.ReadLine();
         }
     }
