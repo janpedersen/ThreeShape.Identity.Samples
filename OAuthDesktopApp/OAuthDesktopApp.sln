@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuthDesktopApp", "OAuthDesktopApp\OAuthDesktopApp.csproj", "{00AC6B66-1850-4F20-9126-18122AD0616C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B3395854-F0A4-4BEB-ADB3-264282AA58F3}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreeShape.Identity.Policies", "ThreeShape.Identity.Policies\ThreeShape.Identity.Policies.csproj", "{DFCC601E-B1A6-4198-B05C-72215C2F908B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreeShape.Identity.Security", "ThreeShape.Identity.Security\ThreeShape.Identity.Security.csproj", "{3D5087F4-B12B-45B9-9EA6-08C7072E302E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00AC6B66-1850-4F20-9126-18122AD0616C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00AC6B66-1850-4F20-9126-18122AD0616C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00AC6B66-1850-4F20-9126-18122AD0616C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00AC6B66-1850-4F20-9126-18122AD0616C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFCC601E-B1A6-4198-B05C-72215C2F908B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFCC601E-B1A6-4198-B05C-72215C2F908B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFCC601E-B1A6-4198-B05C-72215C2F908B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFCC601E-B1A6-4198-B05C-72215C2F908B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D5087F4-B12B-45B9-9EA6-08C7072E302E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D5087F4-B12B-45B9-9EA6-08C7072E302E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D5087F4-B12B-45B9-9EA6-08C7072E302E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D5087F4-B12B-45B9-9EA6-08C7072E302E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0474001-3DFA-4E14-B4FE-EBD26D49FFF5}
+	EndGlobalSection
+EndGlobal
