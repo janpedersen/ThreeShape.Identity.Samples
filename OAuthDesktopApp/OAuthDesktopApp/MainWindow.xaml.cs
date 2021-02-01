@@ -23,7 +23,7 @@ namespace OAuthApp
         // client configuration
         const string clientID = "3DD-CodeFlow-Test";
         //const string clientSecret = "bD3U4N1NpF0PZf36Yy0VdpPLuUAvUIGW"; //test
-        const string clientSecret = "uq8JWAFw2QLgNWqQ4wE0Fnn2NDfEbhpr"; //staging
+        const string clientSecret = "uZNcv0aJf4r3P0hQBDT9V7zJZLZBYnGu"; //staging
 
         const string authorizationEndpoint = "https://staging-identity.3shape.com/connect/authorize";
         const string tokenEndpoint = "https://staging-identity.3shape.com/connect/token";
@@ -52,7 +52,7 @@ namespace OAuthApp
             http.Prefixes.Add(redirectURI);
             output("Listening..");
             http.Start();
-            
+
             // Creates the OAuth 2.0 authorization request.
             string authorizationRequest = string.Format("{0}?response_type=code&scope=openid%20profile&redirect_uri={1}&client_id={2}&state={3}&code_challenge={4}&code_challenge_method={5}",
                 authorizationEndpoint,
@@ -77,7 +77,7 @@ namespace OAuthApp
             var buffer = Encoding.UTF8.GetBytes(responseString);
             response.ContentLength64 = buffer.Length;
             var responseOutput = response.OutputStream;
-            Task responseTask = responseOutput.WriteAsync(buffer, 0, buffer.Length).ContinueWith((task) => 
+            Task responseTask = responseOutput.WriteAsync(buffer, 0, buffer.Length).ContinueWith((task) =>
             {
                 responseOutput.Close();
                 http.Stop();
