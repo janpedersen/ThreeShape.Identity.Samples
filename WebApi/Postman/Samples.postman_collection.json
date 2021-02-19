@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "5e75b9df-c537-4365-8250-be3a4533c18d",
+		"name": "Samples",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Weather",
+			"item": [
+				{
+					"name": "GetToken",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "tokenForWeatherApi",
+									"type": "string"
+								},
+								{
+									"key": "state",
+									"value": "just_some_csrf_protection",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "api weather.forecast.read weather.forecast.manage",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "FwM0c9ZLJqWzP85VB4cYNBpqqtIuYmRN",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "sample_weather_client",
+									"type": "string"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://localhost:58431/",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "body",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://staging-identity.3shape.com/connect/token",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "https://staging-identity.3shape.com/connect/authorize",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "Press 'Get New Access Token' at the bottom",
+							"host": [
+								"Press 'Get New Access Token' at the bottom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WeatherForecast.Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<paste token here>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+						],
+						"url": {
+							"raw": "https://localhost:44359/api/v1/weatherforecast",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44359",
+							"path": [
+								"api",
+								"v1",
+								"weatherforecast"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "WeatherForecast.Add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "<paste token here>",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n        \"date\": \"2021-02-23T17:36:14.5763422+01:00\",\r\n        \"temperatureC\": 10,\r\n        \"temperatureF\": 49,\r\n        \"summary\": \"Chilly\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44359/api/v1/weatherforecast",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44359",
+							"path": [
+								"api",
+								"v1",
+								"weatherforecast"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
