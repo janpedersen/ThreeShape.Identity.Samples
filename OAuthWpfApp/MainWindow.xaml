@@ -10,7 +10,7 @@
         <RadioButton x:Name="SysRadio" Content="System Web Browser" Margin="815,26,-15,494" IsChecked="True"/>
 
         <Button x:Name="LoginButton" Content="Login" Margin="560,25,200,494" Click="LoginButton_ClickAsync"/>
-        <TextBox  BorderThickness="1" BorderBrush="Black"  x:Name="TextLog" IsReadOnly="True"  TextWrapping="Wrap" Margin="25,74,15,20"/>
+        <TextBox  VerticalScrollBarVisibility="Auto" BorderThickness="1" BorderBrush="Black"  x:Name="TextLog" IsReadOnly="True"  TextWrapping="Wrap" Margin="25,74,15,20"/>
         <Label Content="Login Activities:" Visibility="Visible" Margin="25,45,675,490"/>
         <RadioButton x:Name="WpfRadio" Content="Embedded Web Browser" Margin="815,51,15,472"/>
 
