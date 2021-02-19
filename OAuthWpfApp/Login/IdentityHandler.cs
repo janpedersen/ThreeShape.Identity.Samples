@@ -1,7 +1,7 @@
 ﻿using IdentityModel.OidcClient;
 using IdentityModel.OidcClient.Browser;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -16,7 +16,7 @@ namespace OAuthWpfApp.Login
 
         public IdentityHandler(bool loginWithEmbeddedBrowser)
         {
-            this._loginWithEmbeddedBrowser = loginWithEmbeddedBrowser;
+            _loginWithEmbeddedBrowser = loginWithEmbeddedBrowser;
         }
 
         public void InitLogin()
@@ -43,30 +43,11 @@ namespace OAuthWpfApp.Login
 
         public string LoginError => _loginResult.Error;
 
-        public UserClaims LoggedInUser => new UserClaims
-        {
-            Id = GetClaims("sub", _loginResult.User.Claims),
+        public DateTime AccessTokenExpiresAt => _loginResult.AccessTokenExpiration;
+        public string AccessToken => _loginResult.AccessToken;
+        public string RefreshToken => _loginResult.RefreshToken;
 
-            Email = _loginResult.User.Identity.Name,
-
-            FullName = GetClaims("firstName", _loginResult.User.Claims) + " " + GetClaims("lastName", _loginResult.User.Claims),
-
-            CompanyId = GetClaims("CompanyId", _loginResult.User.Claims),
-
-            Roles = GetClaims("role", _loginResult.User.Claims),
-
-            Ip = GetClaims("user_ip", _loginResult.User.Claims),
-
-            Token = _loginResult.AccessToken,
-
-            TokenExpiresAt = _loginResult.AccessTokenExpiration,
-        };
-
-        private string GetClaims(string roleName, IEnumerable<Claim> claims)
-        {
-            var claimList = claims.Where(x => x.Type == roleName).Select(x => x.Value).Distinct();
-            return string.Join(" ", claimList);
-        }
+        public IEnumerable<Claim> UserClaims => _loginResult.User.Claims;
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using OAuthWpfApp.Login;
 using System;
+using System.Linq;
 using System.Windows;
 
 namespace OAuthWpfApp
@@ -13,11 +14,11 @@ namespace OAuthWpfApp
 
         private async void LoginButton_ClickAsync(object sender, RoutedEventArgs e)
         {
-            var newLine = Environment.NewLine;
+            var loginWithEmbeddedBrowser = WpfRadio.IsChecked ?? false;
+            var loginType = loginWithEmbeddedBrowser ? "Embedded Browser" : "System Browser";
 
-            TextLog.Text += "Login started....." + newLine;
-
-            var loginWithEmbeddedBrowser = (WpfRadio.IsChecked ?? false);
+            TextLog.Text += $"Authenticated with: {loginType} \n";
+            TextLog.Text += "Login process is started..... \n";
 
             try
             {
@@ -29,35 +30,46 @@ namespace OAuthWpfApp
 
                 if (identityHandler.IsLoginSuccessful)
                 {
-                    TextLog.Text += $"Hello {identityHandler.LoggedInUser.FullName}" + newLine;
+                    TextLog.Text += "User claims: \n";
+                    ShowUserClaims(identityHandler);
 
-                    TextLog.Text += $"Email: {identityHandler.LoggedInUser.Email}" + newLine;
-
-                    TextLog.Text += $"UserId: {identityHandler.LoggedInUser.Id}" + newLine;
-
-                    TextLog.Text += $"CompanyId: {identityHandler.LoggedInUser.CompanyId}" + newLine;
-
-                    TextLog.Text += $"UserIp: {identityHandler.LoggedInUser.Ip}" + newLine;
-
-                    TextLog.Text += $"Roles: {identityHandler.LoggedInUser.Roles}" + newLine;
-
-                    TextLog.Text += $"TokenExpiresAt: {identityHandler.LoggedInUser.TokenExpiresAt}" + newLine;
-
-                    TextLog.Text += $"Token: {identityHandler.LoggedInUser.Token}" + newLine;
+                    TextLog.Text += $"RefreshToken: {identityHandler.RefreshToken} \n";
+                    TextLog.Text += $"AccessToken Expires At: {identityHandler.AccessTokenExpiresAt} \n";
+                    TextLog.Text += $"AccessToken: {identityHandler.AccessToken} \n";
                 }
                 else
                 {
-                    TextLog.Text += $"Login Error: {identityHandler.LoginError}";
+                    TextLog.Text += $"Login Error: {identityHandler.LoginError} \n";
                 }
             }
             catch (Exception ex)
             {
-                TextLog.Text += $"Unexpected Error: {ex.Message}" + newLine;
+                TextLog.Text += $"Unexpected Error: {ex.Message} \n";
             }
 
-            TextLog.Text += "----------------End of login call----------------" + newLine;
+            TextLog.Text += "----------------End of login call---------------- \n";
         }
 
+        private void ShowUserClaims(IdentityHandler identityHandler)
+        {
 
+            foreach (var userClaim in identityHandler.UserClaims.OrderBy(x => x.Type))
+            {
+                var claimName = userClaim.Type;
+                var claimValue = userClaim.Value;
+
+                if (claimName == "sub")
+                {
+                    claimValue += "  <---- UserId";
+                }
+
+                if (claimName == "selectedCompanyId")
+                {
+                    continue; // deprecated claim. use CompanyId instead
+                }
+
+                TextLog.Text += $"        {claimName} : {claimValue} \n";
+            }
+        }
     }
 }
