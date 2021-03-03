@@ -16,21 +16,29 @@ socket, and exchanging that code for authorization tokens.
 This sample is an adaption of [this Google sample](https://github.com/googlesamples/oauth-apps-for-windows/tree/master/OAuthDesktopApp)
 With the 3Shape Identity backend.
 
+Projects:
+---------
+- Console App
+- WPF app
+- Razor Pages App
+- Web APis
+
+**Note:** The OauthRazorWebApp2 is not recommanded to use. 
+
+Getting Started
+--------------
+
+1. Open the solution file: `Samples.sln`
+2. Set one of the project as the startup app
+3. Run the app.
+4. When the app starts, tap "Sign in with 3Shape" and go through the flow.
+
 OAuth Documentation
 --------------------
 
 The protocols referenced in this sample are documented here:
 
 - [OAuth 2.0](https://oauth.net/2/)
-
-
-Getting Started
----------------
-
-1. Open the solution file: `OAuthDesktopApp.sln`
-2. Run the app.
-3. When the app starts, tap "Sign in with 3Shape" and go through the flow.
-
 
 Using your own credentials
 --------------------------
