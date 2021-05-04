@@ -1,0 +1,33 @@
+﻿@page
+@using Microsoft.AspNetCore.Authentication
+@model OauthRazorWebApp2.Pages.Account.ManualLoginModel
+@{
+}
+
+<h3>Id token</h3>
+<p>@await ViewContext.HttpContext.GetTokenAsync("id_token")</p>
+
+<h3>Access token</h3>
+<p>@await ViewContext.HttpContext.GetTokenAsync("access_token")</p>
+
+
+<h3>Claims</h3>
+<ul>
+    @foreach (var claim in HttpContext.User.Claims)
+    {
+        <li>@claim.Type : @claim.Value</li>
+    }
+</ul>
+
+
+<form method="post">
+    <button type="submit">
+        Sign in with 3shape
+    </button>
+</form>
+
+<form asp-page-handler="logout" method="post">
+    <button type="submit">
+        Signout
+    </button>
+</form>
